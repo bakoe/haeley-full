@@ -3,7 +3,6 @@ import { resolve } from 'path';
 import git from 'git-rev-sync';
 
 import { defineConfig, UserConfigExport } from 'vite';
-// import { visualizer } from 'rollup-plugin-visualizer';
 
 const root = resolve(__dirname, 'source');
 const outDir = resolve(__dirname, 'dist');
@@ -20,7 +19,6 @@ export default defineConfig(({ mode }) => {
                 name: 'haeley-full',
                 formats: ['cjs', 'umd', 'es'],
             },
-            sourcemap: 'hidden',
         },
         define: {
             __GIT_COMMIT__: JSON.stringify(git.short(__dirname)),
@@ -28,7 +26,6 @@ export default defineConfig(({ mode }) => {
             __LIB_NAME__: JSON.stringify(process.env.npm_package_name),
             __LIB_VERSION__: JSON.stringify(process.env.npm_package_version),
         },
-        // plugins: [visualizer()]
     };
 
     switch (mode) {
